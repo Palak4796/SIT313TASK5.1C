@@ -1,0 +1,95 @@
+/* Main form container */
+.question-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  background-color: #f9f9f9; /* Light background */
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* A larger shadow for depth */
+  max-width: 1000px; /* Match article form max width */
+  width: 90%;
+  margin: 20px auto; /* Center the form horizontally */
+  gap: 20px; 
+}
+
+/* Heading */
+.question-form h2 {
+  font-size: 1.8rem; /* Match the article form header size */
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  text-align: center; /* Align the heading to the left */
+  width: 100%; /* Full width */
+}
+
+/* Input field styling */
+.input-field input,
+.textarea-field textarea {
+  width: 100%;
+  padding: 12px; /* Match padding with article form */
+  font-size: 1.2rem; /* Match font size with article form */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 5px;
+  box-sizing: border-box;
+}
+
+/* Text area styling */
+.textarea-field textarea {
+  min-height: 100px; /* Set a taller height for text area to match article form */
+  resize: vertical; /* Allows resizing only vertically */
+}
+
+/* Label styling */
+.question-form label {
+  font-weight: 600;
+  color: #34495e;
+  align-self: flex-start;
+  margin-bottom: 5px;
+}
+
+/* Button container */
+.post-button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 20px; /* Match margin with article form */
+}
+
+/* Custom button styling */
+.custom-button {
+  background-color: #3498db;
+  color: #fff;
+  font-size: 1.3rem; /* Match button size with article form */
+  padding: 15px 30px; /* Match padding with article form */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.custom-button:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .question-form {
+    width: 95%; /* Adjust width for smaller screens */
+    padding: 20px; /* Reduce padding on small screens */
+  }
+
+  .question-form h2 {
+    font-size: 2rem; /* Slightly smaller header on mobile */
+  }
+
+  .custom-button {
+    font-size: 1.1rem; /* Adjust button size for mobile */
+  }
+
+  .input-field, .textarea-field {
+    font-size: 1rem; /* Adjust input size for mobile */
+  }
+}
