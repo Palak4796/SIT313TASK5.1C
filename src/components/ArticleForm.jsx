@@ -1,52 +1,23 @@
 import React, { useState } from 'react';
-import { Form, Button } from 'semantic-ui-react';
+import { Form} from 'semantic-ui-react';
 import './ArticleForm.css';
-import { storage } from '../utils/firebase';
 
 const ArticleForm = () => {
   const [title, setTitle] = useState('');
   const [abstract, setAbstract] = useState('');
   const [articleText, setArticleText] = useState('');
   const [tags, setTags] = useState('');
-  const [image, setImage] = useState(null);
-  const [imageUrl, setImageUrl] = useState('');
 
-  const handleImageChange = (e) => {
-    if (e.target.files[0]) {
-      setImage(e.target.files[0]);
-    }
-  };
-
-  const handleImageUpload = () => {
-    if (image) {
-      const uploadTask = storage.ref(`images/${image.name}`).put(image);
-      uploadTask.on(
-        'state_changed',
-        null,
-        (error) => {
-          console.error("Error uploading image:", error);
-        },
-        () => {
-          storage
-            .ref('images')
-            .child(image.name)
-            .getDownloadURL()
-            .then((url) => setImageUrl(url));
-        }
-      );
-    }
-  };
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ title, abstract, articleText, tags, imageUrl });
+    console.log({ title, abstract, articleText, tags });
     
     setTitle('');
     setAbstract('');
     setArticleText('');
     setTags('');
-    setImage(null);
-    setImageUrl('');
+    
   };
 
   return (
@@ -61,17 +32,6 @@ const ArticleForm = () => {
         className="input-field"
       />
       
-      <Form.Input 
-        type="file" 
-        label="Add an image" 
-        onChange={handleImageChange} 
-        className="input-field"
-      />
-      
-      <div className="upload-button-container">
-        <Button onClick={handleImageUpload} color="blue" className="upload-button left-aligned">Upload</Button>
-      </div>
-
       <Form.Input 
         label="Abstract" 
         placeholder="Enter a 1-paragraph abstract" 
