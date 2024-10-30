@@ -2,19 +2,15 @@ import React, { useState } from 'react';
 import { Form } from 'semantic-ui-react';
 import './QuestionForm.css';
 
-const QuestionForm = ({ addQuestion }) => {
+const QuestionForm = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [tags, setTags] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!title || !description) return;
-    addQuestion({
-      title,
-      description,
-      tag: tags,
-    });
+    console.log({ title, description, tags });
+
     setTitle('');
     setDescription('');
     setTags('');
@@ -39,7 +35,7 @@ const QuestionForm = ({ addQuestion }) => {
       />
       <Form.Input
         label="Tags"
-        placeholder="Please add up to 3 tags to describe what your question"
+        placeholder="Please add up to 3 tags to describe your question"
         className="input-field"
         value={tags}
         onChange={(e) => setTags(e.target.value)}
